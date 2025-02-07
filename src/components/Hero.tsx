@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Github, Linkedin, Twitter } from 'lucide-react';
 import Typed from 'typed.js';
 import { gsap } from 'gsap';
+import profileImage from "../components/hariom-khonde2.jpg";
 
 const Hero = () => {
   const typedRef = useRef(null);
@@ -105,7 +106,7 @@ const Hero = () => {
           <div className="relative">
             <div className="absolute -inset-4 bg-blue-500/20 rounded-full blur-xl animate-pulse"></div>
             <img
-              src="src\components\hariom-khonde2.jpg"
+              src={profileImage}
               alt="Hariom Khonde"
               className="relative w-64 h-64 md:w-96 md:h-96 rounded-full object-cover mx-auto border-4 border-blue-500 shadow-lg shadow-blue-500/50"
             />

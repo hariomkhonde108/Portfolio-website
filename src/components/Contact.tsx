@@ -32,10 +32,10 @@ const Contact = () => {
       if (!formRef.current) return;
 
       const result = await emailjs.sendForm(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
+        'service_boiy2mf',
+        'template_f7xr7rr',
         formRef.current,
-        'YOUR_PUBLIC_KEY'
+        'Y97HNm-QBVSX8kjA0'
       );
 
       if (result.text === 'OK') {

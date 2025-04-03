@@ -1,5 +1,8 @@
 import React from 'react';
 import { Github, ExternalLink } from 'lucide-react';
+import project1 from '../components/Screenshot 2025-01-09 155314.png';
+import project2 from '../components/Screenshot 2025-03-09 163933.png';
+import project3 from '../components/Screenshot 2025-04-03 172241.png';
 
 const Projects = () => {
   return (
@@ -14,7 +17,7 @@ const Projects = () => {
         <ProjectCard
             title="Bit Scanner/Eco-Scan"
             description="A real time scanner app for product info gathering"
-            image="src\components\Screenshot 2025-01-09 155314.png"
+            image={project1}
             tags={['ReactNative', 'Gemini API', 'Tailwind']}
             githubUrl="https://github.com/hariomkhonde108/Terrathon"
             liveUrl="https://example.com"
@@ -23,7 +26,7 @@ const Projects = () => {
           <ProjectCard
             title="Tumer Detect"
             description="A full-featured website for the tumer detection using React, Node.js, and ML models"
-            image="src\components\Screenshot 2025-03-09 163933.png"
+            image={project2}
             tags={['React','ML','python','Typescript']}
             githubUrl="https://github.com/hariomkhonde108/Tumer-detect"
             liveUrl="https://example.com"
@@ -32,7 +35,7 @@ const Projects = () => {
           <ProjectCard
             title="Portfolio Website"
             description="A modern portfolio website which displays my all work"
-            image="src\components\Screenshot 2025-04-03 172241.png"
+            image={project3}
             tags={['TypeScript', 'React', 'Tailwind CSS']}
             githubUrl="https://github.com/hariomkhonde108/portfolio-Website"
             liveUrl="https://hariomkhonde.vercel.app/#"

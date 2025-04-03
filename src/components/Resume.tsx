@@ -25,7 +25,7 @@ const Resume = () => {
           </div>
           
           <a
-            href="/assets/resume/hariomresume.pdf" // Ensure this file exists in the public folder during deployment
+            href="/resume/hariomkhonde.pdf" // Ensure this file exists in the public folder during deployment
             download
             className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full hover:bg-gray-200 transition-colors"
           >

@@ -3,10 +3,10 @@ import { Github, ExternalLink } from 'lucide-react';
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 bg-gray-900">
+    <section id="projects" className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-          Featured <span className="text-blue-500">Projects</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-white">
+          Featured <span className="text-white/70">Projects</span>
         </h2>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -57,25 +57,25 @@ const ProjectCard = ({
   githubUrl: string;
   liveUrl: string;
 }) => (
-  <div className="bg-gray-800 rounded-lg overflow-hidden group">
+  <div className="bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden group border border-white/5">
     <div className="relative">
       <img
         src={image}
         alt={title}
         className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
     </div>
     
     <div className="p-6">
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-gray-400 mb-4">{description}</p>
+      <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
+      <p className="text-white/70 mb-4">{description}</p>
       
       <div className="flex flex-wrap gap-2 mb-4">
         {tags.map((tag) => (
           <span
             key={tag}
-            className="px-3 py-1 bg-gray-700 text-sm rounded-full"
+            className="px-3 py-1 bg-white/10 text-sm rounded-full text-white/70"
           >
             {tag}
           </span>
@@ -87,7 +87,7 @@ const ProjectCard = ({
           href={githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+          className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
         >
           <Github size={20} />
           Code
@@ -96,10 +96,10 @@ const ProjectCard = ({
           href={liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+          className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
         >
           <ExternalLink size={20} />
-          Live Demo
+          Live
         </a>
       </div>
     </div>

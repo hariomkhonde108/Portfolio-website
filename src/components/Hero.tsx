@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Github, Linkedin, Twitter } from 'lucide-react';
 import Typed from 'typed.js';
 import { gsap } from 'gsap';
-import profileImage from "../components/hariom-khonde2.jpg";
+import profileImage from "../components/hariom-khonde.png";
+import '../styles/background.css';
 
 const Hero = () => {
   const typedRef = useRef(null);
@@ -11,7 +12,7 @@ const Hero = () => {
 
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
-      strings: ['MERN Stack Developer', 'Linux Enthusiast', 'DataStructures & Alogo'],
+      strings: ['MERN Stack Developer', 'Linux Enthusiast', 'Data Structures & Algo'],
       typeSpeed: 50,
       backSpeed: 30,
       loop: true,
@@ -31,16 +32,36 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-20">
-      {/* Background gradient with animated overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_#3b82f6_0%,_transparent_50%)] animate-pulse"></div>
-        </div>
+    <section className="relative min-h-screen flex items-center justify-center py-20 bg-black">
+      {/* Animated background */}
+      <div className="bg"></div>
+      
+      {/* Animated particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-white/20 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              scale: Math.random() * 2 + 0.5,
+            }}
+            animate={{
+              y: [null, Math.random() * -100],
+              opacity: [0.2, 0.6, 0.2],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        ))}
       </div>
       
       {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center z-10">
         {/* Text content */}
         <motion.div 
           className="flex-1 text-center md:text-left"
@@ -48,17 +69,26 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="inline-block mb-4 px-4 py-1 bg-white/5 backdrop-blur-sm rounded-full text-sm text-white/60"
+          >
+            Welcome to my portfolio
+          </motion.div>
+          
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
             <motion.span 
               className="block"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
-              Hi, I'm Hariom Khonde
+              Hi, I'm <span className="text-white">Hariom Khonde</span>
             </motion.span>
             <motion.span 
-              className="block text-blue-500"
+              className="block text-white/70 mt-2"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
@@ -67,14 +97,14 @@ const Hero = () => {
             </motion.span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-400 mb-8">
+          <p className="text-xl md:text-2xl text-white/50 mb-8 min-h-[2rem]">
             <span ref={typedRef}></span>
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
             <motion.a
               href="#projects"
-              className="group px-8 py-3 bg-blue-500 text-white rounded-full font-medium flex items-center gap-2 hover:bg-blue-600 transition-all duration-300 hover:scale-105"
+              className="group px-8 py-3 bg-white text-black rounded-full font-medium flex items-center gap-2 hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-lg shadow-white/5"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -104,26 +134,31 @@ const Hero = () => {
           ref={imageRef}
         >
           <div className="relative">
-            <div className="absolute -inset-4 bg-blue-500/20 rounded-full blur-xl animate-pulse"></div>
+            <div className="absolute -inset-4 bg-white/5 rounded-full blur-xl animate-pulse"></div>
+            <div className="absolute -inset-2 bg-gradient-to-r from-white/5 to-transparent rounded-full blur-2xl"></div>
             <img
               src={profileImage}
               alt="Hariom Khonde"
-              className="relative w-64 h-64 md:w-96 md:h-96 rounded-full object-cover mx-auto border-4 border-blue-500 shadow-lg shadow-blue-500/50"
+              className="relative w-64 h-64 md:w-96 md:h-96 rounded-full object-cover mx-auto border-4 border-white/10 shadow-lg shadow-black/50"
+              loading="lazy"
             />
+            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-white/60">
+              Available for hire
+            </div>
           </div>
         </motion.div>
       </div>
       
       {/* Scroll indicator */}
       <motion.div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.8 }}
       >
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex items-end justify-center">
+        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex items-end justify-center">
           <motion.div 
-            className="w-1 h-3 bg-gray-400 rounded-full mb-1"
+            className="w-1 h-3 bg-white/30 rounded-full mb-1"
             animate={{ 
               y: [0, 12, 0],
             }}
@@ -144,9 +179,10 @@ const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => 
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="text-gray-400 hover:text-white transition-colors hover:scale-110"
+    className="text-white/50 hover:text-white transition-colors hover:scale-110 p-2 bg-white/5 rounded-full backdrop-blur-sm"
     whileHover={{ scale: 1.2, rotate: 5 }}
     whileTap={{ scale: 0.9 }}
+    aria-label={`Visit ${href}`}
   >
     {icon}
   </motion.a>

@@ -3,10 +3,10 @@ import { Code, Database, Server, Terminal, Layout, PenTool as Tool, Cloud, GitBr
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-gray-800">
+    <section id="skills" className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-          Technical <span className="text-blue-500">Skills</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-white">
+          Technical <span className="text-white/70">Skills</span>
         </h2>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -68,22 +68,22 @@ const SkillCategory = ({
   title: string;
   skills: { name: string; level: number }[];
 }) => (
-  <div className="p-6 bg-gray-700 rounded-lg">
+  <div className="p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-white/5">
     <div className="flex items-center gap-3 mb-6">
-      <div className="text-blue-500">{icon}</div>
-      <h3 className="text-xl font-bold">{title}</h3>
+      <div className="text-white/70">{icon}</div>
+      <h3 className="text-xl font-bold text-white">{title}</h3>
     </div>
     
     <div className="space-y-4">
       {skills.map((skill) => (
         <div key={skill.name}>
           <div className="flex justify-between mb-1">
-            <span className="text-sm font-medium text-gray-300">{skill.name}</span>
-            <span className="text-sm font-medium text-gray-400">{skill.level}%</span>
+            <span className="text-sm font-medium text-white/70">{skill.name}</span>
+            <span className="text-sm font-medium text-white/50">{skill.level}%</span>
           </div>
-          <div className="w-full bg-gray-600 rounded-full h-2">
+          <div className="w-full bg-black/50 rounded-full h-2">
             <div
-              className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+              className="bg-white/80 h-2 rounded-full transition-all duration-300"
               style={{ width: `${skill.level}%` }}
             />
           </div>

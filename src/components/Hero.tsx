@@ -12,7 +12,7 @@ const Hero = () => {
 
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
-      strings: ['MERN Stack Developer', 'Linux Enthusiast', 'Data Structures & Algo'],
+      strings: ['Curios Student', 'Linux Enthusiast', 'Data Structures&Algo'],
       typeSpeed: 50,
       backSpeed: 30,
       loop: true,

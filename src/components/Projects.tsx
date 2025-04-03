@@ -10,31 +10,32 @@ const Projects = () => {
         </h2>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <ProjectCard
+            title="Bit Scanner/Eco-Scan"
+            description="A real time scanner app for product info gathering"
+            image="src\components\Screenshot 2025-01-09 155314.png"
+            tags={['ReactNative', 'Gemini API', 'Tailwind']}
+            githubUrl="https://github.com/hariomkhonde108/Terrathon"
+            liveUrl="https://example.com"
+          />
+
           <ProjectCard
-            title="E-Commerce Platform"
-            description="A full-featured e-commerce platform built with React, Node.js, and MongoDB"
-            image="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800"
-            tags={['React', 'Node.js', 'MongoDB']}
-            githubUrl="https://github.com"
+            title="Tumer Detect"
+            description="A full-featured website for the tumer detection using React, Node.js, and ML models"
+            image="src\components\Screenshot 2025-03-09 163933.png"
+            tags={['React','ML','python','Typescript']}
+            githubUrl="https://github.com/hariomkhonde108/Tumer-detect"
             liveUrl="https://example.com"
           />
           
           <ProjectCard
-            title="Task Management App"
-            description="A collaborative task management application with real-time updates"
-            image="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800"
-            tags={['Vue.js', 'Firebase', 'Tailwind']}
-            githubUrl="https://github.com"
-            liveUrl="https://example.com"
-          />
-          
-          <ProjectCard
-            title="AI Chat Interface"
-            description="A modern chat interface for AI interactions with voice support"
-            image="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=800"
-            tags={['TypeScript', 'OpenAI', 'WebRTC']}
-            githubUrl="https://github.com"
-            liveUrl="https://example.com"
+            title="Portfolio Website"
+            description="A modern portfolio website which displays my all work"
+            image="src\components\Screenshot 2025-04-03 172241.png"
+            tags={['TypeScript', 'React', 'Tailwind CSS']}
+            githubUrl="https://github.com/hariomkhonde108/portfolio-Website"
+            liveUrl="https://hariomkhonde.vercel.app/#"
           />
         </div>
       </div>

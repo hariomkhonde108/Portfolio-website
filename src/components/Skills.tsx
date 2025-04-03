@@ -14,8 +14,8 @@ const Skills = () => {
             icon={<Layout />}
             title="Frontend"
             skills={[
-              { name: 'React', level: 90 },
-              { name: 'TypeScript', level: 85 },
+              { name: 'React', level: 80 },
+              { name: 'HTML/CSS', level: 85 },
               { name: 'Next.js', level: 80 },
               { name: 'Tailwind CSS', level: 95 },
             ]}
@@ -27,8 +27,8 @@ const Skills = () => {
             skills={[
               { name: 'Node.js', level: 85 },
               { name: 'Express', level: 80 },
-              { name: 'Python', level: 75 },
-              { name: 'GraphQL', level: 70 },
+              // { name: 'Python', level: 75 },
+              // { name: 'GraphQL', level: 70 },
             ]}
           />
           
@@ -36,21 +36,21 @@ const Skills = () => {
             icon={<Database />}
             title="Databases"
             skills={[
-              { name: 'PostgreSQL', level: 85 },
+              // { name: 'PostgreSQL', level: 85 },
               { name: 'MongoDB', level: 80 },
-              { name: 'Redis', level: 70 },
-              { name: 'Prisma', level: 75 },
+              // { name: 'Redis', level: 70 },
+              // { name: 'Prisma', level: 75 },
             ]}
           />
           
           <SkillCategory
             icon={<Cloud />}
-            title="DevOps"
+            title="Tools"
             skills={[
-              { name: 'Docker', level: 80 },
-              { name: 'AWS', level: 75 },
-              { name: 'CI/CD', level: 85 },
-              { name: 'Kubernetes', level: 70 },
+              { name: 'Git', level: 80 },
+              { name: 'Github', level: 75 },
+              { name: 'Linux', level: 85 },
+              { name: 'Postman', level: 70 },
             ]}
           />
         </div>

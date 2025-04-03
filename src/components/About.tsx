@@ -84,7 +84,7 @@ const About = () => {
               variants={containerVariants}
             >
               <Stat icon={<Code />} label="Projects Completed" value="5+" />
-              <Stat icon={<Server />} label="Hackathons Attended" value="2" />
+              <Stat icon={<Server />} label="Hackathons Attended" value="4" />
               <Stat icon={<Terminal />} label="Technologies" value="10+" />
               <Stat icon={<Coffee />} label="Coffee Consumed" value="∞" />
             </motion.div>
@@ -93,24 +93,24 @@ const About = () => {
           {/* Right column: Experience cards */}
           <motion.div className="space-y-6" variants={containerVariants}>
             <ExperienceCard
-              title="Student"
-              subtitle="PES University"
-              period="2023 - 2027"
+              title="PES University, RR Campus bangluru"
+              subtitle="Student"
+              period="2023 - Present"
               description="B.tech in Computer science and Engineering"
               isActive={true}
             />
             <ExperienceCard
-              title="Student"
-              subtitle="PES University"
-              period="2023 - 2027"
-              description="B.tech in Computer science and Engineering"
+              title="Daimond Group of Institution, Bidar "
+              subtitle="Student"
+              period="2023 - 2021"
+              description="PUC {karantaka Board}"
               isActive={true}
             />
             <ExperienceCard
-              title="Free Lancer"
-              subtitle="Full Stack Developer"
-              period="Present"
-              description="Leading development of enterprise applications using MERN stack"
+              title="Shahu Maharaj Residential School, Bidar"
+              subtitle="Student"
+              period="2021 - 2008"
+              description="6th to SSLC Completed here"
               isActive={true}
             />
           </motion.div>

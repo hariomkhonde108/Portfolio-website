@@ -28,7 +28,7 @@ const Projects = () => {
             description="A full-featured website for the tumer detection using React, Node.js, and ML models"
             image={project2}
             tags={['React','ML','python','Typescript']}
-            githubUrl="https://github.com/hariomkhonde108/Tumer-detect"
+            githubUrl="https://github.com/hariomkhonde108/Tumer-Detect"
             liveUrl="https://example.com"
           />
           
@@ -37,7 +37,7 @@ const Projects = () => {
             description="A modern portfolio website which displays my all work"
             image={project3}
             tags={['TypeScript', 'React', 'Tailwind CSS']}
-            githubUrl="https://github.com/hariomkhonde108/portfolio-Website"
+            githubUrl="https://github.com/hariomkhonde108/Portfolio-website"
             liveUrl="https://hariomkhonde.vercel.app/#"
           />
         </div>

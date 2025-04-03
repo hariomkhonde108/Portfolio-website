@@ -26,7 +26,7 @@ const Resume = () => {
           
           <a
             href="/resume/hariomkhonde.pdf" // Ensure this file exists in the public folder during deployment
-            download
+            download="Hariom_Khonde_Resume.pdf"
             className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full hover:bg-gray-200 transition-colors"
           >
             <Download size={20} />

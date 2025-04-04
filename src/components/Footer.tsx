@@ -11,7 +11,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4 text-white">Hariom Khonde</h3>
             <p className="text-white/70">
-              A passionate Full Stack Developer focused on creating scalable and efficient web solutions.
+              A passionate student with a knack for creating innovative solutions. I love coding and exploring new technologies.
             </p>
           </div>
           

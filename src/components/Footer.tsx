@@ -22,7 +22,7 @@ const Footer = () => {
               <li>
                 <motion.a 
                   href="#about" 
-                  className="text-white/70 hover:text-white transition-colors inline-block"
+                  className="text-white/70 hover:text-white transition-colors inline-block relative z-10"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -32,7 +32,7 @@ const Footer = () => {
               <li>
                 <motion.a 
                   href="#projects" 
-                  className="text-white/70 hover:text-white transition-colors inline-block"
+                  className="text-white/70 hover:text-white transition-colors inline-block relative z-10"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -42,7 +42,7 @@ const Footer = () => {
               <li>
                 <motion.a 
                   href="#skills" 
-                  className="text-white/70 hover:text-white transition-colors inline-block"
+                  className="text-white/70 hover:text-white transition-colors inline-block relative z-10"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -52,7 +52,7 @@ const Footer = () => {
               <li>
                 <motion.a 
                   href="#contact" 
-                  className="text-white/70 hover:text-white transition-colors inline-block"
+                  className="text-white/70 hover:text-white transition-colors inline-block relative z-10"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >

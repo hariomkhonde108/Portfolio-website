@@ -96,7 +96,7 @@ const Contact = () => {
                 <ContactInfo
                   icon={<Phone />}
                   title="Phone"
-                  content="+91 1234567890"
+                  content="+91 7676126256"
                 />
                 <ContactInfo
                   icon={<MapPin />}

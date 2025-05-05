@@ -1,0 +1,5 @@
+# public/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://hariomkhonde.vercel.app/sitemap.xml

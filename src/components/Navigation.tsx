@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, Twitter, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { useAnalytics } from '../hooks/useAnalytics';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { trackClick, trackThemeToggle, trackExternalLink } = useAnalytics();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +45,10 @@ const Navigation = () => {
             <SocialLink href="https://www.linkedin.com/in/hariom-khonde/" icon={<Linkedin size={20} />} />
             <SocialLink href="https://twitter.com/hariomkhonde" icon={<Twitter size={20} />} />
             <button
-              onClick={toggleTheme}
+              onClick={() => {
+                toggleTheme();
+                trackThemeToggle(theme === 'dark' ? 'light' : 'dark');
+              }}
               className="p-2 rounded-full text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
               aria-label="Toggle theme"
             >
@@ -53,7 +58,10 @@ const Navigation = () => {
 
           <div className="md:hidden flex items-center space-x-2">
             <button
-              onClick={toggleTheme}
+              onClick={() => {
+                toggleTheme();
+                trackThemeToggle(theme === 'dark' ? 'light' : 'dark');
+              }}
               className="p-2 rounded-full text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
               aria-label="Toggle theme"
             >
@@ -101,15 +109,20 @@ const MobileNavLink = ({ href, children }: { href: string; children: React.React
   </a>
 );
 
-const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-gray-500 dark:text-white/50 hover:text-gray-700 dark:hover:text-white transition-colors p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-full"
-  >
-    {icon}
-  </a>
-);
+const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => {
+  const { trackExternalLink } = useAnalytics();
+  
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => trackExternalLink(href, 'navigation')}
+      className="text-gray-500 dark:text-white/50 hover:text-gray-700 dark:hover:text-white transition-colors p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-full"
+    >
+      {icon}
+    </a>
+  );
+};
 
 export default Navigation;

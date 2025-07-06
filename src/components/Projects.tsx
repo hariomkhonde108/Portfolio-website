@@ -1,5 +1,7 @@
 import React from 'react';
 import { Github, ExternalLink } from 'lucide-react';
+import { motion } from 'framer-motion';
+import LazyImage from './LazyImage';
 import project1 from '../components/Screenshot 2025-01-09 155314.png';
 import project2 from '../components/Screenshot 2025-03-09 163933.png';
 import project3 from '../components/Screenshot 2025-04-03 172241.png';
@@ -8,11 +10,23 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-gray-50 dark:bg-black transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">
+        <motion.h2 
+          className="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           Featured <span className="text-gray-600 dark:text-white/70">Projects</span>
-        </h2>
+        </motion.h2>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div 
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
 
         <ProjectCard
             title="Bit Scanner/Eco-Scan"
@@ -40,7 +54,7 @@ const Projects = () => {
             githubUrl="https://github.com/hariomkhonde108/Portfolio-website"
             liveUrl="https://hariomkhonde.vercel.app/#"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -61,12 +75,16 @@ const ProjectCard = ({
   githubUrl: string;
   liveUrl: string;
 }) => (
-  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden group border border-gray-200/20 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300">
-    <div className="relative">
-      <img
+  <motion.div 
+    className="bg-white/80 dark:bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden group border border-gray-200/20 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300"
+    whileHover={{ y: -5 }}
+    transition={{ duration: 0.3 }}
+  >
+    <div className="relative h-48">
+      <LazyImage
         src={image}
         alt={title}
-        className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 dark:from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
     </div>
@@ -107,7 +125,7 @@ const ProjectCard = ({
         </a>
       </div>
     </div>
-  </div>
+  </motion.div>
 );
 
 export default Projects;

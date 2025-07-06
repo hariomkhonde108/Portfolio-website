@@ -2,9 +2,11 @@ import React, { useState, useRef } from 'react';
 import { Send, Mail, MapPin, Phone } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
+import { useAnalytics } from '../hooks/useAnalytics';
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
+  const { trackFormSubmission, trackContactMethod } = useAnalytics();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,6 +42,7 @@ const Contact = () => {
 
       if (result.text === 'OK') {
         setStatus({ loading: false, success: true, error: false });
+        trackFormSubmission('contact_form', true);
         setFormData({ name: '', email: '', message: '' });
         if (formRef.current) {
           formRef.current.reset();
@@ -49,6 +52,7 @@ const Contact = () => {
       }
     } catch (error) {
       setStatus({ loading: false, success: false, error: true });
+      trackFormSubmission('contact_form', false);
       console.error('Error sending message:', error);
     }
   };
@@ -221,6 +225,8 @@ const ContactInfo = ({
   title: string;
   content: string;
 }) => {
+  const { trackContactMethod } = useAnalytics();
+  
   // Determine if this is an email, phone, or location contact
   const isEmail = title.toLowerCase() === 'email';
   const isPhone = title.toLowerCase() === 'phone';
@@ -248,6 +254,11 @@ const ContactInfo = ({
     href: link,
     target: '_blank',
     rel: 'noopener noreferrer',
+    onClick: () => {
+      if (isEmail) trackContactMethod('email');
+      if (isPhone) trackContactMethod('phone');
+      if (isLocation) trackContactMethod('location');
+    },
   } : {};
 
   return (

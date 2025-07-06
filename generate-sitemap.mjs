@@ -4,10 +4,12 @@ import { createWriteStream } from 'fs';
 import { Readable } from 'stream';
 
 const links = [
-  { url: '/', changefreq: 'daily', priority: 1.0 },
-  { url: '/about', changefreq: 'monthly', priority: 0.7 },
-  { url: '/projects', changefreq: 'monthly', priority: 0.7 },
-  { url: '/contact', changefreq: 'yearly', priority: 0.5 }
+  { url: '/', changefreq: 'weekly', priority: 1.0 },
+  { url: '/#about', changefreq: 'monthly', priority: 0.8 },
+  { url: '/#projects', changefreq: 'monthly', priority: 0.8 },
+  { url: '/#skills', changefreq: 'monthly', priority: 0.7 },
+  { url: '/#resume', changefreq: 'monthly', priority: 0.7 },
+  { url: '/#contact', changefreq: 'yearly', priority: 0.6 }
 ];
 
 const stream = new SitemapStream({ hostname: 'https://hariomkhonde.vercel.app' });

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Code, Server, Terminal, Coffee, ExternalLink } from "lucide-react";
 import pesLogo from "../assets/pes-logo1.jpeg";
+import chealLogo from "../assets/cheal-logo.jpeg";
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -105,6 +106,17 @@ const About = () => {
             />
 
             <ExperienceCard
+              title="CHEAL Centre, PES University, Bengaluru"
+              subtitle="Intern"
+              period="June-July 2025"
+              description="Completed internship focusing on research and development in emerging technologies"
+              logo={chealLogo}
+              website="https://www.pes.edu/"
+              isActive={false}
+              showDetails={true}
+            />
+
+            <ExperienceCard
               title="Diamond Group of Institutions, Bidar"
               subtitle="Student"
               period="2021 – 2023"
@@ -113,14 +125,14 @@ const About = () => {
               showDetails={false}
             />
 
-            <ExperienceCard
+            {/* <ExperienceCard
               title="Shahu Maharaj Residential School, Bidar"
               subtitle="Student"
               period="2008 – 2021"
               description="Completed 6th to SSLC here"
               isActive={true}
               showDetails={false}
-            />
+            /> */}
           </motion.div>
         </motion.div>
       </div>

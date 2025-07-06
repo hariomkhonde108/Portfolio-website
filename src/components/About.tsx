@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Code, Server, Terminal, Coffee } from "lucide-react";
+import { Code, Server, Terminal, Coffee, ExternalLink } from "lucide-react";
+import pesLogo from "../assets/pes-logo1.jpeg";
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -93,25 +94,32 @@ const About = () => {
           {/* Right column: Experience cards */}
           <motion.div className="space-y-6" variants={containerVariants}>
             <ExperienceCard
-              title="PES University, RR Campus bangluru"
+              title="PES University, RR Campus, Bengaluru"
               subtitle="Student"
-              period="2023 - Present"
-              description="B.tech in Computer science and Engineering"
+              period="2023 – Present"
+              description="B.Tech in Computer Science and Engineering"
+              logo={pesLogo}
+              website="https://www.pes.edu/"
               isActive={true}
+              showDetails={true}
             />
+
             <ExperienceCard
-              title="Daimond Group of Institution, Bidar "
+              title="Diamond Group of Institutions, Bidar"
               subtitle="Student"
-              period="2023 - 2021"
-              description="PUC {karantaka Board}"
+              period="2021 – 2023"
+              description="PUC (Karnataka Board)"
               isActive={true}
+              showDetails={false}
             />
+
             <ExperienceCard
               title="Shahu Maharaj Residential School, Bidar"
               subtitle="Student"
-              period="2021 - 2008"
-              description="6th to SSLC Completed here"
+              period="2008 – 2021"
+              description="Completed 6th to SSLC here"
               isActive={true}
+              showDetails={false}
             />
           </motion.div>
         </motion.div>
@@ -147,23 +155,92 @@ const ExperienceCard = ({
   subtitle,
   period,
   description,
+  image,
+  logo,
+  website,
   isActive,
+  showDetails,
 }: {
   title: string;
   subtitle: string;
   period: string;
   description: string;
+  image?: string;
+  logo?: string;
+  website?: string;
   isActive: boolean;
+  showDetails: boolean;
 }) => (
   <motion.div
-    className="bg-white/80 dark:bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-gray-200/20 dark:border-white/5 shadow-sm"
+    className="bg-white/80 dark:bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-gray-200/20 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300"
     whileHover={{ scale: 1.02 }}
     transition={{ duration: 0.2 }}
   >
-    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{title}</h3>
-    <p className="text-lg text-blue-600 dark:text-blue-400 mb-1">{subtitle}</p>
-    <p className="text-sm text-gray-500 dark:text-white/50 mb-2">{period}</p>
-    <p className="text-gray-600 dark:text-white/60">{description}</p>
+    {showDetails ? (
+      // Detailed card with logo, image, and website
+      <div className="flex items-start gap-4">
+        {/* Logo */}
+        <div className="flex-shrink-0">
+          <img
+            src={logo}
+            alt={`${title} logo`}
+            className="w-16 h-16 rounded-lg object-cover border border-gray-200/20 dark:border-white/10"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+            }}
+          />
+        </div>
+        
+        {/* Content */}
+        <div className="flex-1">
+          <div className="flex items-start justify-between mb-2">
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{title}</h3>
+              <p className="text-lg text-blue-600 dark:text-blue-400 mb-1">{subtitle}</p>
+              <p className="text-sm text-gray-500 dark:text-white/50 mb-2">{period}</p>
+              <p className="text-gray-600 dark:text-white/60">{description}</p>
+            </div>
+            
+            {/* Website link */}
+            <motion.a
+              href={website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 p-2 text-gray-500 dark:text-white/50 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-200"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              title="Visit website"
+            >
+              <ExternalLink size={20} />
+            </motion.a>
+          </div>
+          
+          {/* Institution image - only show if image is provided */}
+          {image && (
+            <div className="mt-4">
+              <img
+                src={image}
+                alt={`${title} campus`}
+                className="w-full h-32 rounded-lg object-cover border border-gray-200/20 dark:border-white/10"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                }}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    ) : (
+      // Simple card without logo, image, and website
+      <div>
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{title}</h3>
+        <p className="text-lg text-blue-600 dark:text-blue-400 mb-1">{subtitle}</p>
+        <p className="text-sm text-gray-500 dark:text-white/50 mb-2">{period}</p>
+        <p className="text-gray-600 dark:text-white/60">{description}</p>
+      </div>
+    )}
   </motion.div>
 );
 

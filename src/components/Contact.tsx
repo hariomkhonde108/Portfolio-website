@@ -91,12 +91,12 @@ const Contact = () => {
                 <ContactInfo
                   icon={<Mail />}
                   title="Email"
-                  content="hariomkhonde108@gmail.com"
+                  content="hariomkhonde@gmail.com"
                 />
                 <ContactInfo
                   icon={<Phone />}
                   title="Phone"
-                  content="+91 1234567890"
+                  content="+91 7676126256"
                 />
                 <ContactInfo
                   icon={<MapPin />}
@@ -220,16 +220,52 @@ const ContactInfo = ({
   icon: React.ReactNode;
   title: string;
   content: string;
-}) => (
-  <div className="flex items-start gap-4 group">
-    <div className="text-gray-500 dark:text-white/50 p-2 bg-gray-100/50 dark:bg-white/5 rounded-lg group-hover:bg-gray-200/20 dark:group-hover:bg-white/10 transition-colors">
-      {icon}
-    </div>
-    <div>
-      <h4 className="font-medium mb-1 text-gray-700 dark:text-white/70">{title}</h4>
-      <p className="text-gray-500 dark:text-white/50">{content}</p>
-    </div>
-  </div>
-);
+}) => {
+  // Determine if this is an email, phone, or location contact
+  const isEmail = title.toLowerCase() === 'email';
+  const isPhone = title.toLowerCase() === 'phone';
+  const isLocation = title.toLowerCase() === 'location';
+  
+  // Create appropriate link
+  const getLink = () => {
+    if (isEmail) {
+      return `mailto:${content}`;
+    }
+    if (isPhone) {
+      return `tel:${content}`;
+    }
+    if (isLocation) {
+      // Create Google Maps link for the location
+      const encodedLocation = encodeURIComponent(content);
+      return `https://www.google.com/maps/search/?api=1&query=${encodedLocation}`;
+    }
+    return null;
+  };
+
+  const link = getLink();
+  const Component = link ? 'a' : 'div';
+  const props = link ? {
+    href: link,
+    target: '_blank',
+    rel: 'noopener noreferrer',
+  } : {};
+
+  return (
+    <Component
+      {...props}
+      className={`flex items-start gap-4 group ${link ? 'cursor-pointer hover:scale-105 transition-transform duration-200' : ''}`}
+    >
+      <div className="text-gray-500 dark:text-white/50 p-2 bg-gray-100/50 dark:bg-white/5 rounded-lg group-hover:bg-gray-200/20 dark:group-hover:bg-white/10 transition-colors">
+        {icon}
+      </div>
+      <div>
+        <h4 className="font-medium mb-1 text-gray-700 dark:text-white/70">{title}</h4>
+        <p className={`text-gray-500 dark:text-white/50 ${link ? 'hover:text-gray-700 dark:hover:text-white transition-colors' : ''}`}>
+          {content}
+        </p>
+      </div>
+    </Component>
+  );
+};
 
 export default Contact;

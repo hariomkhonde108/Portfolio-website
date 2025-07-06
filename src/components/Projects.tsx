@@ -6,10 +6,10 @@ import project3 from '../components/Screenshot 2025-04-03 172241.png';
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 bg-black">
+    <section id="projects" className="py-20 bg-gray-50 dark:bg-black transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-white">
-          Featured <span className="text-white/70">Projects</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">
+          Featured <span className="text-gray-600 dark:text-white/70">Projects</span>
         </h2>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -61,25 +61,25 @@ const ProjectCard = ({
   githubUrl: string;
   liveUrl: string;
 }) => (
-  <div className="bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden group border border-white/5">
+  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden group border border-gray-200/20 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300">
     <div className="relative">
       <img
         src={image}
         alt={title}
         className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 dark:from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
     </div>
     
     <div className="p-6">
-      <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
-      <p className="text-white/70 mb-4">{description}</p>
+      <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{title}</h3>
+      <p className="text-gray-600 dark:text-white/70 mb-4">{description}</p>
       
       <div className="flex flex-wrap gap-2 mb-4">
         {tags.map((tag) => (
           <span
             key={tag}
-            className="px-3 py-1 bg-white/10 text-sm rounded-full text-white/70"
+            className="px-3 py-1 bg-gray-100/50 dark:bg-white/10 text-sm rounded-full text-gray-700 dark:text-white/70"
           >
             {tag}
           </span>
@@ -91,7 +91,7 @@ const ProjectCard = ({
           href={githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
+          className="flex items-center gap-2 text-gray-600 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors"
         >
           <Github size={20} />
           Code
@@ -100,7 +100,7 @@ const ProjectCard = ({
           href={liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
+          className="flex items-center gap-2 text-gray-600 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors"
         >
           <ExternalLink size={20} />
           Live

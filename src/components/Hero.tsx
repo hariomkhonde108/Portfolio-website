@@ -5,19 +5,32 @@ import Typed from 'typed.js';
 import { gsap } from 'gsap';
 import profileImage from "../components/hariom-khonde.png";
 import '../styles/background.css';
+import { useTheme } from '../context/ThemeContext';
 
 const Hero = () => {
-  const typedRef = useRef(null);
-  const imageRef = useRef(null);
+  const typedRef = useRef<HTMLSpanElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const typedInstanceRef = useRef<Typed | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
-    const typed = new Typed(typedRef.current, {
-      strings: ['Passoniate Student', 'Linux Enthusiast', 'Data Structures&Algo'],
-      typeSpeed: 50,
-      backSpeed: 30,
-      loop: true,
-      backDelay: 1500,
-    });
+    // Destroy existing typed instance if it exists
+    if (typedInstanceRef.current) {
+      typedInstanceRef.current.destroy();
+    }
+
+    // Create new typed instance
+    if (typedRef.current) {
+      const typed = new Typed(typedRef.current, {
+        strings: ['Curios Student', 'Linux Enthusiast', 'Data Structures&Algo'],
+        typeSpeed: 50,
+        backSpeed: 30,
+        loop: true,
+        backDelay: 1500,
+      });
+
+      typedInstanceRef.current = typed;
+    }
 
     // Floating animation for the image
     gsap.to(imageRef.current, {
@@ -28,11 +41,15 @@ const Hero = () => {
       ease: "power1.inOut"
     });
 
-    return () => typed.destroy();
-  }, []);
+    return () => {
+      if (typedInstanceRef.current) {
+        typedInstanceRef.current.destroy();
+      }
+    };
+  }, [theme]); // Recreate typed instance when theme changes
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-20 bg-black">
+    <section className="relative min-h-screen flex items-center justify-center py-20 bg-white dark:bg-black transition-colors duration-300">
       {/* Animated background */}
       <div className="bg"></div>
       
@@ -41,7 +58,7 @@ const Hero = () => {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-white/20 rounded-full"
+            className="absolute w-1 h-1 bg-gray-400/20 dark:bg-white/20 rounded-full"
             initial={{
               x: Math.random() * window.innerWidth,
               y: Math.random() * window.innerHeight,
@@ -73,22 +90,22 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="inline-block mb-4 px-4 py-1 bg-white/5 backdrop-blur-sm rounded-full text-sm text-white/60"
+            className="inline-block mb-4 px-4 py-1 bg-gray-100/50 dark:bg-white/5 backdrop-blur-sm rounded-full text-sm text-gray-600 dark:text-white/60"
           >
             Welcome to my portfolio
           </motion.div>
           
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
             <motion.span 
-              className="block"
+              className="block text-gray-900 dark:text-white"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
-              Hi, I'm <span className="text-white">Hariom Khonde</span>
+              Hi, I'm <span className="text-gray-900 dark:text-white">Hariom Khonde</span>
             </motion.span>
             <motion.span 
-              className="block text-white/70 mt-2"
+              className="block text-gray-600 dark:text-white/70 mt-2"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
@@ -97,14 +114,14 @@ const Hero = () => {
             </motion.span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-white/50 mb-8 min-h-[2rem]">
-            <span ref={typedRef}></span>
-          </p>
+          <div className="text-xl md:text-2xl mb-8 min-h-[2rem]">
+            <span ref={typedRef} className="typed-text"></span>
+          </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
             <motion.a
               href="#projects"
-              className="group px-8 py-3 bg-white text-black rounded-full font-medium flex items-center gap-2 hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-lg shadow-white/5"
+              className="group px-8 py-3 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-medium flex items-center gap-2 hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-lg shadow-gray-500/20 dark:shadow-white/5"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -134,15 +151,15 @@ const Hero = () => {
           ref={imageRef}
         >
           <div className="relative">
-            <div className="absolute -inset-4 bg-white/5 rounded-full blur-xl animate-pulse"></div>
-            <div className="absolute -inset-2 bg-gradient-to-r from-white/5 to-transparent rounded-full blur-2xl"></div>
+            <div className="absolute -inset-4 bg-gray-200/50 dark:bg-white/5 rounded-full blur-xl animate-pulse"></div>
+            <div className="absolute -inset-2 bg-gradient-to-r from-gray-200/50 dark:from-white/5 to-transparent rounded-full blur-2xl"></div>
             <img
               src={profileImage}
               alt="Hariom Khonde"
-              className="relative w-64 h-64 md:w-96 md:h-96 rounded-full object-cover mx-auto border-4 border-white/10 shadow-lg shadow-black/50"
+              className="relative w-64 h-64 md:w-96 md:h-96 rounded-full object-cover mx-auto border-4 border-gray-200/20 dark:border-white/10 shadow-lg shadow-gray-500/20 dark:shadow-black/50"
               loading="lazy"
             />
-            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-white/60">
+            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-100/80 dark:bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-gray-600 dark:text-white/60">
               Available for hire
             </div>
           </div>
@@ -156,9 +173,9 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.8 }}
       >
-        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex items-end justify-center">
+        <div className="w-6 h-10 border-2 border-gray-300/20 dark:border-white/20 rounded-full flex items-end justify-center">
           <motion.div 
-            className="w-1 h-3 bg-white/30 rounded-full mb-1"
+            className="w-1 h-3 bg-gray-400/30 dark:bg-white/30 rounded-full mb-1"
             animate={{ 
               y: [0, 12, 0],
             }}
@@ -179,7 +196,7 @@ const SocialLink = ({ href, icon }: { href: string; icon: React.ReactNode }) => 
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="text-white/50 hover:text-white transition-colors hover:scale-110 p-2 bg-white/5 rounded-full backdrop-blur-sm"
+    className="text-gray-500 dark:text-white/50 hover:text-gray-700 dark:hover:text-white transition-colors hover:scale-110 p-2 bg-gray-100/50 dark:bg-white/5 rounded-full backdrop-blur-sm"
     whileHover={{ scale: 1.2, rotate: 5 }}
     whileTap={{ scale: 0.9 }}
     aria-label={`Visit ${href}`}

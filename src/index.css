@@ -7,7 +7,34 @@ html {
 }
 
 body {
-  @apply bg-gray-900 text-white;
+  @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300;
+}
+
+/* Custom class for typed text */
+.typed-text {
+  color: #6b7280; /* text-gray-500 */
+}
+
+.dark .typed-text {
+  color: rgba(255, 255, 255, 0.5); /* text-white/50 */
+}
+
+/* Typed.js text color for theme switching */
+.typed-cursor {
+  @apply text-gray-500 dark:text-white/50;
+}
+
+/* Ensure typed text inherits theme colors */
+.typed-cursor,
+.typed-cursor--blink {
+  @apply text-gray-500 dark:text-white/50;
+}
+
+/* Additional selectors for typed text */
+.typed-cursor,
+.typed-cursor--blink,
+.typed-cursor--typing {
+  @apply text-gray-500 dark:text-white/50 !important;
 }
 
 /* Custom scrollbar */
@@ -16,15 +43,15 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-800;
+  @apply bg-gray-100 dark:bg-gray-800;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-blue-500 rounded-full;
+  @apply bg-gray-400 dark:bg-blue-500 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-blue-600;
+  @apply bg-gray-500 dark:bg-blue-600;
 }
 
 /* Smooth transitions */

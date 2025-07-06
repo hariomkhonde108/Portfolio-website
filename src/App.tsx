@@ -7,21 +7,24 @@ import Resume from './components/Resume';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100">
-      <Navigation />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Resume />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <Navigation />
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Skills />
+          <Resume />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

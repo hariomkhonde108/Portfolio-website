@@ -64,7 +64,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
         className="absolute inset-0 w-full h-full object-cover"
         initial={{ opacity: 1 }}
         animate={{ opacity: isLoaded ? 0 : 1 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0 }}
       />
       
       {/* Actual image */}
@@ -74,9 +74,9 @@ const LazyImage: React.FC<LazyImageProps> = ({
           src={src}
           alt={alt}
           className="w-full h-full object-cover"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isLoaded ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
+          initial={false}
+          animate={false}
+          transition={false}
           onLoad={handleLoad}
           onError={handleError}
           loading="lazy"

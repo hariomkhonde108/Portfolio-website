@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Github, Linkedin, Twitter } from 'lucide-react';
 import Typed from 'typed.js';
@@ -6,12 +6,15 @@ import { gsap } from 'gsap';
 import profileImage from "../components/hariom-khonde.png";
 import '../styles/background.css';
 import { useTheme } from '../context/ThemeContext';
+import Terminal from './Terminal';
 
 const Hero = () => {
   const typedRef = useRef<HTMLSpanElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const typedInstanceRef = useRef<Typed | null>(null);
   const { theme } = useTheme();
+  const [showTerminal, setShowTerminal] = useState(false);
+  const [matrixFullscreen, setMatrixFullscreen] = useState(false);
 
   useEffect(() => {
     // Destroy existing typed instance if it exists
@@ -118,6 +121,16 @@ const Hero = () => {
             <span ref={typedRef} className="typed-text"></span>
           </div>
           
+          {/* Start Terminal Button */}
+          <div className="mb-6 flex justify-center md:justify-start">
+            <button
+              className="px-6 py-2 bg-black dark:bg-white text-white dark:text-black rounded-full font-semibold shadow hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 hover:scale-105"
+              onClick={() => setShowTerminal(true)}
+            >
+              Start Terminal
+            </button>
+          </div>
+          
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
             <motion.a
               href="#projects"
@@ -187,6 +200,24 @@ const Hero = () => {
           />
         </div>
       </motion.div>
+      
+      {/* Terminal Modal */}
+      {showTerminal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
+          <div className="bg-gray-900 text-white rounded-lg shadow-lg p-6 w-full max-w-2xl relative">
+            {!matrixFullscreen && (
+              <button
+                className="absolute top-2 right-2 text-gray-400 hover:text-white text-xl"
+                onClick={() => setShowTerminal(false)}
+                aria-label="Close Terminal"
+              >
+                ×
+              </button>
+            )}
+            <Terminal onMatrixFullscreen={setMatrixFullscreen} />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

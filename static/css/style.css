@@ -1,3 +1,6 @@
+html, body {
+    overflow-x: hidden; /* Prevents the whole screen from swiping left/right */
+}
 :root {
     --bg-color: #121212;
     --text-color: #e0e0e0;
@@ -78,11 +81,38 @@ header nav {
 /* =========================================
    MOBILE RESPONSIVENESS (Screens under 768px)
    ========================================= */
-/* 4. Force terminal text to auto-wrap on mobile instead of cutting off */
-    div[style*="monospace"] {
-        white-space: pre-wrap !important; /* Forces text to wrap to the next line */
-        word-wrap: break-word !important; /* Prevents long strings from breaking out */
-        font-size: 0.75rem !important;    /* Slightly smaller to fit cleaner on phones */
-        padding: 1rem !important;
-        overflow-x: hidden !important;
+@media (max-width: 768px) {
+    /* 1. Reduce the massive desktop padding */
+    body {
+        padding: 1.5rem 1rem;
     }
+
+    /* 2. Stack the header elements so they don't squish */
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+        border-bottom: none; /* Looks cleaner on mobile */
+    }
+
+    /* 3. Allow text navigation links to wrap neatly */
+    header nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    /* 4. Ensure terminal blocks and the cURL command can be swiped horizontally instead of breaking the screen width */
+    div[style*="monospace"] {
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 0.8rem !important;
+        padding: 1rem !important;
+    }
+
+    /* 5. Adjust the footer to stack */
+    footer div {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

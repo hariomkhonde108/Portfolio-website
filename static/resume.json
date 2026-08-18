@@ -1,0 +1,32 @@
+{
+  "name": "Hariom Khonde",
+  "title": "Software Engineer | Backend Systems",
+  "location": "Bengaluru, India",
+  "education": {
+    "university": "PES University RR Campus",
+    "degree": "B.Tech Computer Science and Engineering",
+    "timeline": "2023 - 2027"
+  },
+  "skills": {
+    "languages": ["C++", "Go", "Python", "Java", "C"],
+    "infrastructure": ["Docker", "Kubernetes", "Apache Kafka", "MinIO", "AWS"],
+    "databases": ["PostgreSQL", "Redis", "MySQL", "MongoDB"]
+  },
+  "projects": [
+    {
+      "name": "OmniStream",
+      "description": "Distributed real-time collaboration platform with Whisper and Llama 3 AI integration.",
+      "stack": ["Golang", "PostgreSQL", "Kafka", "Docker"]
+    },
+    {
+      "name": "YAK (Yet Another Kafka)",
+      "description": "Fault-tolerant microservice message broker with HWM consensus and zero data loss guarantee.",
+      "stack": ["Python", "FastAPI", "Redis"]
+    }
+  ],
+  "contact": {
+    "github": "https://github.com/hariomkhonde108",
+    "linkedin": "https://linkedin.com/in/hariom-khonde",
+    "x": "https://x.com/Hariom_Khonde"
+  }
+}

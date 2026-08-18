@@ -1,0 +1,74 @@
+:root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --link-color: #79a6d2;
+    --accent: #ffb86c;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    max-width: 800px; /* Keeps the text centered and readable */
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+nav {
+    margin-bottom: 3rem;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: var(--text-color);
+    font-weight: bold;
+}
+/* Header Flexbox Layout */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+header nav {
+    margin-bottom: 0; /* overrides the previous margin */
+}
+
+/* Social Icon Buttons */
+.icon-container {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: var(--text-color);
+    transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+    border-color: var(--link-color);
+    color: var(--link-color);
+    background: rgba(121, 166, 210, 0.1);
+    text-decoration: none;
+}

@@ -1,0 +1,80 @@
+{{ define "main" }}
+    <!-- SSH Login Banner -->
+    <div style="font-family: monospace; font-size: 0.85rem; opacity: 0.6; margin-bottom: 2rem; line-height: 1.4;">
+        Last login: Tue Aug 18 23:37:41 2026 from 103.11.200.x (Bengaluru)<br>
+        Linux hariom-server 6.8.0-generic x86_64<br>
+        * Strictly authorized access only. All connections are logged.
+    </div>
+
+    <section class="intro">
+        <h1>Hariom Khonde</h1>
+        <h2 style="opacity: 0.8; font-weight: 500; margin-top: -10px;">Software Engineer | Backend Systems & ML Pipelines</h2>
+        
+        <p>
+            I am a Computer Science student at PES University specializing in distributed systems, backend architecture, and machine learning integration. I focus on building highly scalable, performant infrastructure—from engineering lock-free WebSocket connections in Go to deploying local RAG architectures.
+        </p>
+
+        <!-- Tech Stack Terminal Block -->
+        <div style="background: rgba(0, 0, 0, 0.3); padding: 1.25rem; border-radius: 8px; border: 1px solid #333; font-family: monospace; font-size: 0.9rem; margin: 2rem 0; line-height: 1.8;">
+            <span style="color: var(--accent);">hariom@khonde</span>:<span style="color: var(--link-color);">~/stack</span>$ cat core_technologies.yml<br>
+            <span style="opacity: 0.8;">
+            languages:      [C++, Go, Python, Java, C]<br>
+            infrastructure: [Docker, Kubernetes, Apache Kafka, MinIO, AWS]<br>
+            databases:      [PostgreSQL, Redis, MySQL, MongoDB]<br>
+            frameworks:     [FastAPI, Node.js, Express.js]
+            </span>
+        </div>
+
+        <p>
+            When I am not optimizing database queries or writing C++, I am usually designing peer-to-peer applications and event-driven microservices.
+        </p>
+
+       <!-- The cURL Easter Egg with Copy Button -->
+        <div style="margin-top: 2rem;">
+            <p style="font-family: monospace; font-size: 0.85rem; opacity: 0.7; margin-bottom: 0.5rem;">
+                > Prefer the terminal? Grab the JSON resume:
+            </p>
+            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.3); padding: 0.75rem 1rem; border-radius: 6px; border: 1px solid #333;">
+                <code style="font-family: monospace; font-size: 0.9rem; color: var(--link-color);">curl https://hariomkhonde.vercel.app/resume.json</code>
+                <button id="copy-btn" onclick="copyCurl()" style="background: transparent; border: 1px solid #555; color: var(--text-color); padding: 0.25rem 0.75rem; border-radius: 4px; cursor: pointer; font-family: monospace; font-size: 0.8rem; transition: all 0.2s ease;">
+                    Copy
+                </button>
+            </div>
+        </div>
+
+        <script>
+            function copyCurl() {
+                const textToCopy = "curl https://hariomkhonde.vercel.app/resume.json";
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    const btn = document.getElementById("copy-btn");
+                    btn.innerText = "Copied!";
+                    btn.style.borderColor = "var(--link-color)";
+                    btn.style.color = "var(--link-color)";
+                    
+                    // Reset button after 2 seconds
+                    setTimeout(() => {
+                        btn.innerText = "Copy";
+                        btn.style.borderColor = "#555";
+                        btn.style.color = "var(--text-color)";
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            }
+        </script>
+        
+        {{ .Content }}
+    </section>
+
+    <section class="directory" style="margin-top: 3rem;">
+        <h3 style="border-bottom: 1px solid #333; padding-bottom: 0.5rem;">> Directory</h3>
+        <ul style="list-style-type: none; padding-left: 0; line-height: 2;">
+            <li><a href="/projects">./projects</a> — <span>Distributed systems, Go microservices, and AI models.</span></li>
+            <li><a href="/experience">./experience</a> — <span>Research, internships, and technical roles.</span></li>
+            <li><a href="/blog">./blog</a> — <span>Technical write-ups and architecture deep-dives.</span></li>
+            <li><a href="/resume.pdf" target="_blank" rel="noopener noreferrer">./resume.pdf</a> — <span>Download my full resume.</span></li>
+            <!-- The new contact line -->
+            <li><a href="mailto:hariomkhonde@gmail.com">./contact</a> — <span>Ping me directly via email.</span></li>
+        </ul>
+    </section>
+{{ end }}

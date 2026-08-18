@@ -1,0 +1,10 @@
+{{ define "main" }}
+    <article>
+        <h1>{{ .Title }}</h1>
+        <p style="opacity: 0.7; font-size: 0.9em;">{{ .Date.Format "Jan 02, 2006" }} | {{ .ReadingTime }} min read</p>
+        
+        <div class="content">
+            {{ .Content }}
+        </div>
+    </article>
+{{ end }}

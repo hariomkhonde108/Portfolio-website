@@ -1,0 +1,16 @@
+{{ define "main" }}
+    <section>
+        <h1 style="border-bottom: 1px solid #333; padding-bottom: 0.5rem;">{{ .Title }}</h1>
+        
+        <ul style="list-style-type: none; padding: 0;">
+            {{ range .Pages }}
+                <li style="margin-bottom: 1.5rem;">
+                    <a href="{{ .Permalink }}" style="font-size: 1.25rem; font-weight: bold;">> {{ .Title }}</a>
+                    <span style="opacity: 0.5; font-size: 0.9rem; margin-left: 10px;">{{ .Date.Format "Jan 2006" }}</span>
+                    <!-- Hugo automatically generates a summary from the first few lines of your Markdown -->
+                    <p style="margin: 0.25rem 0 0 1.25rem; opacity: 0.8;">{{ .Summary }}</p>
+                </li>
+            {{ end }}
+        </ul>
+    </section>
+{{ end }}

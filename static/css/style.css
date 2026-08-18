@@ -72,3 +72,44 @@ header nav {
     background: rgba(121, 166, 210, 0.1);
     text-decoration: none;
 }
+
+
+
+/* =========================================
+   MOBILE RESPONSIVENESS (Screens under 768px)
+   ========================================= */
+@media (max-width: 768px) {
+    /* 1. Reduce the massive desktop padding */
+    body {
+        padding: 1.5rem 1rem;
+    }
+
+    /* 2. Stack the header elements so they don't squish */
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+        border-bottom: none; /* Looks cleaner on mobile */
+    }
+
+    /* 3. Allow text navigation links to wrap neatly */
+    header nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    /* 4. Ensure terminal blocks and the cURL command can be swiped horizontally instead of breaking the screen width */
+    div[style*="monospace"] {
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 0.8rem !important;
+        padding: 1rem !important;
+    }
+
+    /* 5. Adjust the footer to stack */
+    footer div {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

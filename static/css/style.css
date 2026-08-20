@@ -6,17 +6,83 @@ html, body {
     --text-color: #e0e0e0;
     --link-color: #79a6d2;
     --accent: #ffb86c;
+    --text-xs: clamp(0.8rem, 0.77rem + 0.12vw, 0.9rem);
+    --text-sm: clamp(0.9rem, 0.86rem + 0.18vw, 1rem);
+    --text-base: clamp(1rem, 0.94rem + 0.28vw, 1.12rem);
+    --text-lg: clamp(1.08rem, 1rem + 0.35vw, 1.24rem);
+    --text-xl: clamp(1.3rem, 1.15rem + 0.8vw, 1.7rem);
+    --text-2xl: clamp(1.55rem, 1.32rem + 1.4vw, 2.4rem);
+    --text-3xl: clamp(1.9rem, 1.55rem + 1.6vw, 2.7rem);
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 1.20rem;
-    line-height: 1.6;
+    font-size: var(--text-base);
+    line-height: 1.7;
     max-width: 1000px; /* Keeps the text centered and readable */
     margin: 0 auto;
     padding: 2rem;
+}
+
+h1 {
+    font-size: var(--text-3xl) !important;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: var(--text-2xl) !important;
+    line-height: 1.15;
+}
+
+h3 {
+    font-size: var(--text-xl) !important;
+    line-height: 1.2;
+}
+
+h4 {
+    font-size: var(--text-lg) !important;
+    line-height: 1.25;
+}
+
+p, li {
+    font-size: inherit;
+}
+
+main [style*="font-size"] {
+    font-size: var(--text-sm) !important;
+}
+
+main pre,
+main code,
+main [style*="font-family: monospace"] {
+    font-size: var(--text-sm) !important;
+    line-height: 1.6;
+}
+
+main section h1,
+main section h2,
+main section h3,
+main section h4,
+main article h1,
+main article h2,
+main article h3,
+main article h4 {
+    letter-spacing: normal;
+}
+
+main a[style*="font-size"] {
+    font-size: var(--text-lg) !important;
+}
+
+main p[style*="font-size"],
+main span[style*="font-size"] {
+    font-size: var(--text-sm) !important;
+}
+
+main button[style*="font-size"] {
+    font-size: var(--text-xs) !important;
 }
 
 a {
@@ -88,6 +154,22 @@ header nav {
         padding: 1.5rem 1rem;
     }
 
+    h1 {
+        font-size: clamp(1.7rem, 1.25rem + 1.4vw, 2.1rem) !important;
+    }
+
+    h2 {
+        font-size: clamp(1.3rem, 1.05rem + 1vw, 1.75rem) !important;
+    }
+
+    h3 {
+        font-size: clamp(1.2rem, 1rem + 1vw, 1.5rem) !important;
+    }
+
+    h4 {
+        font-size: clamp(1.02rem, 0.96rem + 0.45vw, 1.15rem) !important;
+    }
+
     /* 2. Stack the header elements so they don't squish */
     header {
         flex-direction: column;
@@ -104,10 +186,12 @@ header nav {
     }
 
     /* 4. Ensure terminal blocks and the cURL command can be swiped horizontally instead of breaking the screen width */
-    div[style*="monospace"] {
+    div[style*="monospace"],
+    pre,
+    code {
         overflow-x: auto;
         white-space: nowrap;
-        font-size: 0.8rem !important;
+        font-size: var(--text-xs) !important;
         padding: 1rem !important;
     }
 

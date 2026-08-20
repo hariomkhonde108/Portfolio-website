@@ -155,11 +155,11 @@ header nav {
     }
 
     h1 {
-        font-size: clamp(1.7rem, 1.25rem + 1.4vw, 2.1rem) !important;
+        font-size: clamp(1.9rem, 1.35rem + 1.8vw, 2.45rem) !important;
     }
 
     h2 {
-        font-size: clamp(1.3rem, 1.05rem + 1vw, 1.75rem) !important;
+        font-size: clamp(1.45rem, 1.15rem + 1.5vw, 2.1rem) !important;
     }
 
     h3 {
@@ -311,3 +311,36 @@ header nav {
 .live-icon:hover {
     color: var(--link-color); /* Makes the live link pop in your accent color instead of white */
 }
+
+
+/* =========================================
+   SQUARE PROFILE AVATAR (RIGHT SIDE)
+   ========================================= */
+/*
+.profile-avatar-square {
+    width: 110px;
+    height: 110px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid #333;
+    background-color: #0d1117;
+    filter: grayscale(100%) contrast(1.1);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    flex-shrink: 0;
+}
+*/
+
+/* .profile-avatar-square:hover {
+    filter: grayscale(0%) contrast(1);
+    border-color: var(--link-color);
+    transform: scale(1.03);
+} */
+
+/* Optional: Make it stack vertically on small mobile screens 
+@media (max-width: 768px) {
+    div[style*="justify-content: space-between"] {
+        flex-direction: column-reverse;
+        align-items: flex-start !important;
+    }
+} 
+*/

@@ -46,9 +46,9 @@
         <p>
             When I am not optimizing database queries or writing C++, I prefer to explore new technologies and hang out with friends.
         </p>
-
         <!-- The cURL Easter Egg with Copy Button -->
-        <div style="margin-top: 2rem;">
+      <!-- cURL Command Box with Copy Button (Hidden on Mobile) -->
+        <div class="hide-on-mobile" style="margin-top: 2rem;">
             <p style="font-family: monospace; font-size: 0.85rem; opacity: 0.7; margin-bottom: 0.5rem;">
                 > Prefer the terminal? Grab the JSON resume:
             </p>
@@ -59,7 +59,6 @@
                 </button>
             </div>
         </div>
-
         <script>
             function copyCurl() {
                 const textToCopy = "curl https://hariomkhonde.vercel.app/resume.json | jq";

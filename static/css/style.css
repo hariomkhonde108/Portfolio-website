@@ -12,8 +12,9 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1.20rem;
     line-height: 1.6;
-    max-width: 800px; /* Keeps the text centered and readable */
+    max-width: 1000px; /* Keeps the text centered and readable */
     margin: 0 auto;
     padding: 2rem;
 }
@@ -115,4 +116,114 @@ header nav {
         flex-wrap: wrap;
         justify-content: center;
     }
+}
+
+
+
+
+
+
+/* =========================================
+   FLOATING DESKTOP SIDEBARS (CENTERED)
+   ========================================= */
+.floating-left, .floating-right {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%); /* This mathematically centers it on the Y-axis */
+    z-index: 10;
+    display: none; /* Hidden by default, shown on desktop */
+}
+
+.floating-left {
+    left: 40px;
+}
+
+.floating-right {
+    right: 40px;
+}
+
+.social-links-vertical, .email-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Note: The bottom ::after lines were removed to keep the centered look clean */
+
+.social-links-vertical a {
+    color: #8b949e;
+    transition: all 0.2s ease;
+}
+
+.social-links-vertical a:hover {
+    color: var(--link-color);
+    transform: translateY(-3px) scale(1.1); /* Added a slight scale for a more tactile hover */
+}
+
+.email-vertical a {
+    writing-mode: vertical-rl;
+    font-family: monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: #8b949e;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.email-vertical a:hover {
+    color: var(--link-color);
+    transform: translateY(-3px);
+}
+
+/* Only show on screens wider than 1200px */
+@media (min-width: 1200px) {
+    .floating-left, .floating-right {
+        display: block;
+    }
+}
+/* The vertical tail line (restored) */
+.social-links-vertical::after, .email-vertical::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 90px;
+    background-color: #333; /* Darkened slightly to match your borders */
+    margin-top: 1rem;
+}
+
+/* Symmetrical top and bottom tracking lines */
+.social-links-vertical::before, .email-vertical::before,
+.social-links-vertical::after, .email-vertical::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 60px;
+    background-color: #333;
+}
+
+.social-links-vertical::before, .email-vertical::before { margin-bottom: 1rem; }
+.social-links-vertical::after, .email-vertical::after { margin-top: 1rem; }
+
+
+
+
+
+/* =========================================
+   PROJECT ICON HOVER EFFECTS
+   ========================================= */
+.project-icon {
+    color: #8b949e; /* Default inactive gray */
+    display: inline-flex;
+    /* This specific cubic-bezier gives it a slight bouncy spring effect */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+.project-icon:hover {
+    color: #fff; /* Lights up white */
+    transform: scale(1.2) translateY(-2px); /* Scales up and moves up slightly */
+}
+
+.live-icon:hover {
+    color: var(--link-color); /* Makes the live link pop in your accent color instead of white */
 }

@@ -1,6 +1,7 @@
 ---
 title: "OmniStream"
 date: 2026-01-01
+live: "https://omnistream-flame.vercel.app/"
 draft: false
 tags: ["Golang", "Kafka", "PostgreSQL", "Docker", "Llama 3"]
 ---
